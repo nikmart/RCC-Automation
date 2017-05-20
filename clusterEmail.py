@@ -10,23 +10,25 @@ body += "Hello, this is a reminder to please fill in your RCC hours for the week
 body += "\nIf you have other hours to record, such as Cluster Maintenence, we recommend you create a new ticket and log the hours there.\n"
 body += "\nThank you"
 
-def sendEmail(address):
-    # Change to your own account information
-    to = 'support@acomp.stanford.edu'
-    gmail_user = 'stanfordrccbot@gmail.com'
-    gmail_password = 'l3tRCCB0t1n'
-    smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
-    smtpserver.ehlo()
-    smtpserver.starttls()
-    smtpserver.ehlo
-    smtpserver.login(gmail_user, gmail_password)
+# Change to your own account information
+to = 'support@acomp.stanford.edu'
+gmail_user = 'stanfordrccbot@gmail.com'
+gmail_password = 'l3tRCCB0t1n'
+smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
+smtpserver.ehlo()
+smtpserver.starttls()
+smtpserver.ehlo
+smtpserver.login(gmail_user, gmail_password)
 
+def sendEmail(address):
     msg = MIMEText("#assignee " + address + "\n" + body) # assign the cluster here
     msg['Subject'] = 'Please check on your cluster'
     msg['From'] = gmail_user
     msg['To'] = to
     smtpserver.sendmail(gmail_user, [to], msg.as_string())
-    smtpserver.quit()
+
 
 for cluster in clusters:
     sendEmail(cluster)
+
+smtpserver.quit()
