@@ -11,7 +11,6 @@ body += "\nIf you have other hours to record, such as Cluster Maintenence, we re
 body += "\nThank you"
 
 # Change to your own account information
-to = 'support@acomp.stanford.edu'
 gmail_user = 'stanfordrccbot@gmail.com'
 gmail_password = 'l3tRCCB0t1n'
 smtpserver = smtplib.SMTP('smtp.gmail.com', 587)
@@ -21,6 +20,7 @@ smtpserver.ehlo
 smtpserver.login(gmail_user, gmail_password)
 
 def sendEmail(address):
+    to = address
     msg = MIMEText("#assignee " + address + "\n" + body) # assign the cluster here
     msg['Subject'] = 'Please check on your cluster'
     msg['From'] = gmail_user
