@@ -30,5 +30,6 @@ def sendEmail(address):
 
 for cluster in clusters:
     sendEmail(cluster)
+    print(cluster)
 
 smtpserver.quit()
