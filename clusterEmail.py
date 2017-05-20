@@ -29,4 +29,4 @@ def sendEmail(address):
     smtpserver.quit()
 
 for cluster in clusters:
-    sendMail(cluster)
+    sendEmail(cluster)
